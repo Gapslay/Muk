@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Muk Phone</title>
+    <!--Google Fonts and Icons-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp|Material+Icons+Two+Tone"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      button{border-radius: 10px;padding: 10px; width: 190px; font: bold; font-size: 25px; }
+    button a{text-decoration: none; }
+
+      body {
+        width: 100%;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        background: rgb(32, 33, 36);
+      }
+      .center {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .lock {
+        /*
+        width: 350px;
+        height: 90vh;
+        */
+           width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex-direction: column;
+        background: white;
+        border-radius: 10mm;
+        padding: 10px;
+        border: 2mm solid rgb(210, 210, 210);
+        box-sizing: border-box;
+      }
+      .keys {
+        width: fit-content;
+        height: fit-content;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 15px;
+      }
+      .keys button {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: none;
+        outline: none;
+        font-family: poppins;
+        background: rgb(242, 241, 242);
+        font-size: 20px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: 0.2s ease-out;
+      }
+      .keys button span {
+        text-align: center;
+        line-height: 40px;
+        font-size: 30px;
+        display: none;
+      }
+      button.icon {
+      /*  background: rgb(95, 94, 95);*/
+        background: rgb(255, 255, 255);
+        color: rgb(242, 241, 242);
+      }
+      .keys button:active {
+        border-radius: 5mm;
+        background: rgb(199, 198, 199);
+      }
+      .btn {
+        font-family: poppins;
+        font-size: 12px;
+        background: rgb(32, 33, 36);
+        color: rgb(242, 241, 242);
+        border: none;
+        outline: none;
+        margin: 30px 0;
+        margin-bottom: 10px;
+        padding: 7px 12px;
+        border-radius: 5mm;
+        margin-left: 220px;
+        cursor: pointer;
+        width: 30%;
+      }
+      .pin-display {
+        width: fit-content;
+        height: fit-content;
+        max-width: 80%;
+        padding: 10px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-bottom: 72px;
+        overflow: hidden;
+       
+      }
+
+
+
+      .Linedots{
+        font-size: 20px;
+        left: 12%;
+        width: fit-content;
+        height: fit-content;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+      }
+
+
+      .dots {
+        left: 10%;
+        width: fit-content;
+        height: fit-content;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+      }
+      
+      .dot {
+        /*
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgb(95, 94, 95);
+        margin: 0 5px;
+        animation: scale 0.3s ease-in-out;
+        */
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: rgb(95, 94, 95);
+        margin: 0 15px;
+        animation: scale 0.3s ease-in-out;
+      
+
+      }
+      @keyframes scale {
+        from {
+          transform: scale(1.4);
+        }
+      }
+      .dot.removing {
+        animation: scaleIn 0.15s ease-in-out;
+      }
+      @keyframes scaleIn {
+        to {
+          transform: scale(0);
+        }
+      }
+      .TextEnter{
+        color: rgb(95, 94, 95);
+        top: 10%;
+        font-size: 35px;
+        position: absolute;
+      }
+
+      .Line1{
+        color: rgb(95, 94, 95);
+        top: 23%;
+     /*   font-size: 80px;*/
+     font-size: 500%;
+        left: 12%;
+        position: absolute;
+      }
+      .Line2{
+        color: rgb(95, 94, 95);
+        top: 23%;
+        left: 25.5%;
+        font-size: 500%;
+        position: absolute;
+      }
+      .Line3{
+        color: rgb(95, 94, 95);
+        top: 23%;
+        left: 39%;
+     /*   font-size: 80px; */
+     font-size: 500%;
+        position: absolute;
+      }
+      .Line4{
+        color: rgb(95, 94, 95);
+        top: 23%;
+        left: 52.5%;
+   /*     font-size: 80px; */
+        font-size: 500%;
+        position: absolute;
+      }
+      .Line5{
+        color: rgb(95, 94, 95);
+        top: 23%;
+        left: 66%;
+   /*     font-size: 80px; */
+        font-size: 500%;
+        position: absolute;
+      }
+      .Line6{
+        color: rgb(95, 94, 95);
+        top: 23%;
+        left: 79.5%;
+ /*       font-size: 80px; */
+        font-size: 500%;
+        position: absolute;
+      }
+
+      #audio {
+  display: none;
+  }
+
+  .cake > img {
+  width: 50%;
+  left: 15% ;
+  top : 90% ;
+  width: 40px;
+  z-index: 8;
+  animation: slide var(--d) infinite, z-order var(--d) infinite steps(1);
+  /* transform: rotate(5deg);*/
+  position: absolute; 
+
+
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="center">
+      <div class="TextEnter" id="TextEnter">Enter Password</div>
+      <div class="Line1" id="Line1">_</div> 
+      <div class="Line2" id="Line2">_</div> 
+      <div class="Line3" id="Line3">_</div> 
+      <div class="Line4" id="Line4">_</div> 
+      <div class="Line5" id="Line5">_</div> 
+      <div class="Line6" id="Line6">_</div> 
+     
+  <div class="Line" id="Line"></div> 
+      <div class="lock">
+        <input type="hidden" name="pin" id="pin" />
+        <div class="pin-display">
+          <div class="dots"></div>
+        </div>
+        <div class="keys">
+          <button type="button">1</button>
+          <button type="button">2</button>
+          <button type="button">3</button>
+          <button type="button">4</button>
+          <button type="button">5</button>
+          <button type="button">6</button>
+          <button type="button">7</button>
+          <button type="button">8</button>
+          <button type="button">9</button>
+          <button type="button" class="icon clear">
+            <span class="material-icons-outlined">backspace</span>
+          </button>
+          <button type="button">0</button>
+          <button type="button" class="icon next" id="icon next">
+            <span class="material-icons-outlined">keyboard_tab</span>
+          </button>
+        </div>
+
+        <button type="button" class="btn" id="btn">Emergency</button>
+      </div>
+    </div>
+
+    <div>
+      <audio controls onended=""  id="audio">
+          <source src="audio/Emergency.mp3">
+      </audio> 
+    </div>
+
+    <div class="cake"> 
+      <img src="image/Cake.jpg" >    
+    </div>
+
+    <script>
+
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const input = document.getElementById("pin");
+        const dotsContainer = document.querySelector(".dots");
+        const keys = document.querySelectorAll(".keys button");
+        cc=input.value;
+
+        keys.forEach((key) => {
+          key.addEventListener("click", (e) => {
+
+            console.log(e.target);
+            if (e.target.closest(".clear")) {
+              removeDot();
+              input.value = input.value.slice(0, -1);
+            } else if (e.target.closest(".next")) {
+              //Next Method
+              if(input.value=="050444") {
+              window.location.href = "index1.html" ;
+              }
+              else{
+                input.value=cc;
+                removeDotAll();
+              }
+            } else {
+              input.value += key.innerText;
+              addDot() ; 
+            }
+          });
+        });
+
+
+        function addDot() {
+          const dot = document.createElement("div");
+          const dots = dotsContainer.querySelectorAll(".dot");
+          if(dots.length<6) {
+          dot.className = "dot";
+          dotsContainer.appendChild(dot);
+            if(dots.length==5) {
+              setTimeout(() => {
+              if(input.value=="050444") {
+              window.location.href = "index1.html" ;
+              } 
+              else{
+                input.value=cc;
+                removeDotAll();
+              }
+            }, 300);
+            }
+          }
+        }
+
+          /*
+          else{
+            if(input.value=="050444") {
+              window.location.href = "index1.html" ;
+              }            
+              else{
+                input.value=cc;
+                removeDotAll();
+              }
+
+          }
+        }
+*/
+
+        function removeDot() {
+          const dots = dotsContainer.querySelectorAll(".dot");
+          if (dots.length > 0) {
+            const lastDot = dots[dots.length - 1];
+            lastDot.classList.add("removing");
+            setTimeout(() => {
+              dotsContainer.removeChild(lastDot);
+            }, 100);
+          }
+        }
+          
+        function removeDotAll() {
+          for(let i =20; i>0 ; i--) {
+          const dots = dotsContainer.querySelectorAll(".dot");
+          if (dots.length > 0) {
+            const lastDot = dots[dots.length - 1];
+            lastDot.classList.add("removing");
+            dotsContainer.removeChild(lastDot);
+          }
+        }
+        }
+
+        btn.addEventListener('click', function(){
+          audio.play()
+   
+        })
+
+
+
+      });
+    </script>
+  </body>
+</html>
